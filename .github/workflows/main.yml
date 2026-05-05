@@ -3,6 +3,14 @@ name: CI
 on:
   push:
     branches: ["main"]
+  pull_request:
+    types: [opened, reopened]
+    branches: ["main"]
+    
+permissions:
+  contents: read
+  pages: write
+  id-token: write    
 
 jobs:
   lint:
@@ -22,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - run: echo "Job triggered by ${{ github.event_name }} event."
-      - run: echo "Running on ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🎉 Job triggered by ${{ github.event_name }} event."
+      - run: echo "🖥 Running on ${{ runner.os }} server hosted by GitHub!"
       - uses: actions/checkout@v3
       - name: Set-up Node
         uses: actions/setup-node@v1
@@ -33,4 +41,31 @@ jobs:
         run: npm install
       - name: Test
         run: node_modules/.bin/mocha-headless-chrome -f test.html --args no-sandbox
-      - run: echo "Job status is ${{ job.status }}."
+      - run: echo "🍏 Job status is ${{ job.status }}."
+      
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: mkdir dist
+      - run: cp index.html dist/
+      - run: cp script.js dist/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4   
