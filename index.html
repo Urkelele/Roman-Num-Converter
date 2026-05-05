@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numeral Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Roman Numeral Converter</h1>
+
+    <section class="card">
+      <h2>Integer → Roman</h2>
+      <input type="number" id="intInput" placeholder="Enter a number (1–3999)" min="1" max="3999">
+      <button onclick="toRoman()">Convert</button>
+      <div class="result" id="result1"></div>
+    </section>
+
+    <section class="card">
+      <h2>Roman → Integer</h2>
+      <input type="text" id="romanInput" placeholder="Enter a Roman numeral (e.g. XIV)">
+      <button onclick="toInteger()">Convert</button>
+      <div class="result" id="result2"></div>
+    </section>
+
+    <p class="hint"><a href="test.html">▶ Run automated test suite</a></p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function toRoman() {
+      const val = parseInt(document.getElementById('intInput').value, 10);
+      const out = document.getElementById('result1');
+      try {
+        out.textContent = '→ ' + integerToRoman(val);
+        out.className = 'result ok';
+      } catch (e) {
+        out.textContent = '⚠ ' + e.message;
+        out.className = 'result err';
+      }
+    }
+
+    function toInteger() {
+      const val = document.getElementById('romanInput').value;
+      const out = document.getElementById('result2');
+      try {
+        out.textContent = '→ ' + romanToInteger(val);
+        out.className = 'result ok';
+      } catch (e) {
+        out.textContent = '⚠ ' + e.message;
+        out.className = 'result err';
+      }
+    }
+  </script>
+</body>
+</html>

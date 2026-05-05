@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numeral Converter — Test Suite</title>
+
+  <!-- Mocha CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css" />
+</head>
+<body>
+
+<header>
+  <h1>
+    <span class="badge">Task 4</span>
+    Roman Numeral Converter — Automated Test Suite
+  </h1>
+  <p>
+    Tests for <code>integerToRoman()</code> and <code>romanToInteger()</code> &nbsp;·&nbsp;
+    Part 1: Human-created &nbsp;·&nbsp; Part 2: AI-assisted
+  </p>
+</header>
+
+<!-- Mocha renders results here -->
+<div id="mocha"></div>
+
+<!-- Mocha + Chai -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.7/chai.min.js"></script>
+
+<!-- Initialise Mocha before any test code is loaded -->
+<script>
+  mocha.setup({ ui: 'bdd', timeout: 3000 });
+</script>
+
+<!-- Production code being tested -->
+<script src="script.js"></script>
+
+<!-- Test implementations -->
+<script src="tests.js"></script>
+
+<!-- Run -->
+<script>
+  mocha.run();
+</script>
+
+</body>
+</html>
