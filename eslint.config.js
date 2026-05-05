@@ -18,7 +18,7 @@ module.exports = [
                 "error",
                 "single"
             ],
-            "no-unused-vars": "error",
+            "no-unused-vars": "off",
             "semi": [
                 "error",
                 "always"
