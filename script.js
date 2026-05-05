@@ -1,8 +1,6 @@
 // ============================================================
 // script.js — Roman Numeral Converter (JavaScript)
-// Implementation mirrors the PHP logic from index.php but
-// adds full input validation so the test suite can verify
-// both happy-path and error cases.
+// Implementation mirrors the PHP logic from index.php but adds full input validation so the test suite can verify both happy-path and error cases.
 // ============================================================
 
 /**
