@@ -15,10 +15,10 @@ function integerToRoman(num) {
         !Number.isFinite(num) ||
         !Number.isInteger(num)
     ) {
-        throw new Error("The number must be between 1 and 3999.");
+        throw new Error('The number must be between 1 and 3999.');
     }
     if (num < 1 || num > 3999) {
-        throw new Error("The number must be between 1 and 3999.");
+        throw new Error('The number must be between 1 and 3999.');
     }
 
     const map = [
@@ -48,12 +48,12 @@ function integerToRoman(num) {
 function romanToInteger(roman) {
     // Must be a non-empty string with no leading/trailing whitespace
     if (typeof roman !== 'string' || roman.length === 0 || roman !== roman.trim()) {
-        throw new Error("Input must be a valid Roman numeral.");
+        throw new Error('Input must be a valid Roman numeral.');
     }
 
     // Only uppercase Roman numeral characters allowed
     if (!/^[IVXLCDM]+$/.test(roman)) {
-        throw new Error("Input must be a valid Roman numeral.");
+        throw new Error('Input must be a valid Roman numeral.');
     }
 
     // Parse the value using the subtractive algorithm
@@ -69,7 +69,7 @@ function romanToInteger(roman) {
     // Validate by converting the result back — non-canonical strings
     // (e.g. "IIII", "VV", "IL", "XXL", "MMMM") will not round-trip.
     if (total < 1 || total > 3999 || integerToRoman(total) !== roman) {
-        throw new Error("Input must be a valid Roman numeral.");
+        throw new Error('Input must be a valid Roman numeral.');
     }
 
     return total;
