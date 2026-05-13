@@ -43,9 +43,19 @@
       const out = document.getElementById('result1');
       try {
         out.textContent = '→ ' + integerToRoman(val);
+        gtag('event', 'toRoma_Translated', {
+        'input': val,
+        'output': out.textContent,
+        'timestamp': new Date().toISOString()
+        });
         out.className = 'result ok';
       } catch (e) {
         out.textContent = '⚠ ' + e.message;
+        gtag('event', 'toRoma_Error', {
+        'input': val,
+        'Error': out.textContent,
+        'timestamp': new Date().toISOString()
+        });
         out.className = 'result err';
       }
     }
@@ -55,9 +65,19 @@
       const out = document.getElementById('result2');
       try {
         out.textContent = '→ ' + romanToInteger(val);
+        gtag('event', 'toInteger_Translated', {
+        'input': val,
+        'output': out.textContent,
+        'timestamp': new Date().toISOString()
+        });
         out.className = 'result ok';
       } catch (e) {
         out.textContent = '⚠ ' + e.message;
+        gtag('event', 'toInteger_Error', {
+        'input': val,
+        'Error': out.textContent,
+        'timestamp': new Date().toISOString()
+        });
         out.className = 'result err';
       }
     }
